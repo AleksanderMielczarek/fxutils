@@ -1,0 +1,6 @@
+dependencies {
+    compile project(':fxutils-fxspring')
+    compile project(':fxutils-fxspring-fxbinding')
+
+    compile 'commons-beanutils:commons-beanutils:1.9.2'
+}

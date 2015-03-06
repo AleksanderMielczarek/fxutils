@@ -1,0 +1,5 @@
+dependencies {
+    compile project(':fxutils-core')
+    compile project(':fxutils-fxconverter')
+    compile project(':fxutils-fxspring')
+}

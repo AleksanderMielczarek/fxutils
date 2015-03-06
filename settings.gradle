@@ -1,0 +1,18 @@
+rootProject.name = 'fxutils'
+
+include 'fxutils-core'
+
+include 'fxutils-fxconverter'
+
+include 'fxutils-fxspring'
+
+include 'fxutils-fxspring-fxautowired'
+
+include 'fxutils-fxspring-fxbinding'
+
+include 'fxutils-fxspring-fxtools'
+
+include 'fxutils-fxspring-fxvalidation'
+
+include 'fxutils-fxspring-fxdefault'
+
