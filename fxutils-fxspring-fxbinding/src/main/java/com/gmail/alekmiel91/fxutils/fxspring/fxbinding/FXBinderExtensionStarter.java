@@ -1,4 +1,4 @@
-package com.gmail.alekmiel91.fxutils.fxspring.fxbinding.binderdispatcher;
+package com.gmail.alekmiel91.fxutils.fxspring.fxbinding;
 
 import com.gmail.alekmiel91.fxutils.fxspring.fxbinding.binder.Binder;
 import com.gmail.alekmiel91.fxutils.fxspring.fxbinding.binder.BinderFactory;

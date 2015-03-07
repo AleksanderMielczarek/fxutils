@@ -1,5 +1,6 @@
 package com.gmail.alekmiel91.fxutils.fxconverter.annotation;
 
+import com.gmail.alekmiel91.fxutils.fxconverter.types.Access;
 import com.gmail.alekmiel91.fxutils.fxconverter.types.Element;
 
 import java.lang.annotation.*;
@@ -9,20 +10,17 @@ import java.lang.annotation.*;
  * @since 2015-02-26
  */
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ElementType.FIELD, ElementType.TYPE})
+@Target(ElementType.FIELD)
+@Repeatable(FXConverts.class)
 @Documented
 public @interface FXConvert {
-    Config[] value() default {};
+    Class<?>[] value() default {};
 
-    @Retention(RetentionPolicy.RUNTIME)
-    @Target({})
-    @interface Config {
-        Class<?> value();
+    String[] getterSetterNames() default {};
 
-        String[] getterSetterNames() default {};
+    Element[] getterSetterElements() default {Element.FIELD, Element.FIELD};
 
-        Element[] getterSetterElements() default {};
+    Class<?>[] setterType() default {};
 
-        Class<?>[] setterType() default {};
-    }
+    Access access() default Access.INCLUDE;
 }

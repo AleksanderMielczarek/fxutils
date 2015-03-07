@@ -1,6 +1,6 @@
 package com.gmail.alekmiel91.fxutils.fxconverter.getter;
 
-import com.gmail.alekmiel91.fxutils.fxconverter.exception.ConverterException;
+import com.gmail.alekmiel91.fxutils.fxconverter.exception.FXConverterException;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -18,11 +18,11 @@ public class MethodGetter implements Getter {
             Method method = objectClass.getMethod(name);
             return method.invoke(object);
         } catch (NoSuchMethodException e) {
-            throw new ConverterException("No method " + name + " in " + object.getClass().getName(), e);
+            throw new FXConverterException("No method " + name + " in " + object.getClass().getName(), e);
         } catch (InvocationTargetException e) {
-            throw new ConverterException("Cannot invoke method " + name + " in " + object.getClass().getName(), e);
+            throw new FXConverterException("Cannot invoke method " + name + " in " + object.getClass().getName(), e);
         } catch (IllegalAccessException e) {
-            throw new ConverterException("Cannot access method " + name + " in " + object.getClass().getName(), e);
+            throw new FXConverterException("Cannot access method " + name + " in " + object.getClass().getName(), e);
         }
     }
 }

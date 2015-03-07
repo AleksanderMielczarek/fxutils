@@ -1,6 +1,6 @@
 package com.gmail.alekmiel91.fxutils.fxconverter.getter;
 
-import com.gmail.alekmiel91.fxutils.fxconverter.exception.ConverterException;
+import com.gmail.alekmiel91.fxutils.fxconverter.exception.FXConverterException;
 import org.apache.commons.beanutils.PropertyUtils;
 
 import java.lang.reflect.InvocationTargetException;
@@ -15,11 +15,11 @@ public class FieldGetter implements Getter {
         try {
             return PropertyUtils.getProperty(object, name);
         } catch (IllegalAccessException e) {
-            throw new ConverterException("Cannot access field " + name + " in " + object.getClass().getName(), e);
+            throw new FXConverterException("Cannot access field " + name + " in " + object.getClass().getName(), e);
         } catch (InvocationTargetException e) {
-            throw new ConverterException("Cannot invoke method to get field " + name + " in " + object.getClass().getName(), e);
+            throw new FXConverterException("Cannot invoke method to get field " + name + " in " + object.getClass().getName(), e);
         } catch (NoSuchMethodException e) {
-            throw new ConverterException("No method to get field " + name + " in " + object.getClass().getName(), e);
+            throw new FXConverterException("No method to get field " + name + " in " + object.getClass().getName(), e);
         }
     }
 }

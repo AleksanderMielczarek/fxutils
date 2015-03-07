@@ -1,6 +1,6 @@
 package com.gmail.alekmiel91.fxutils.fxconverter.setter;
 
-import com.gmail.alekmiel91.fxutils.fxconverter.exception.ConverterException;
+import com.gmail.alekmiel91.fxutils.fxconverter.exception.FXConverterException;
 import org.apache.commons.beanutils.BeanUtils;
 
 import java.lang.reflect.InvocationTargetException;
@@ -15,9 +15,9 @@ public class FieldSetter implements Setter {
         try {
             BeanUtils.setProperty(object, name, value);
         } catch (IllegalAccessException e) {
-            throw new ConverterException("Cannot access field " + name + " in " + object.getClass().getName(), e);
+            throw new FXConverterException("Cannot access field " + name + " in " + object.getClass().getName(), e);
         } catch (InvocationTargetException e) {
-            throw new ConverterException("Cannot invoke method to access field" + name + " in " + object.getClass().getName(), e);
+            throw new FXConverterException("Cannot invoke method to access field" + name + " in " + object.getClass().getName(), e);
         }
     }
 }

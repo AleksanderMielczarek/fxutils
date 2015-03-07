@@ -3,7 +3,6 @@ package com.gmail.alekmiel91.fxutils.fxconverter.utils;
 import com.gmail.alekmiel91.fxutils.fxconverter.annotation.FXConvert;
 
 import java.lang.reflect.Field;
-import java.util.Optional;
 
 /**
  * @author Aleksander Mielczarek
@@ -11,15 +10,10 @@ import java.util.Optional;
  */
 public class DefaultGetterSetterNameFactory implements GetterSetterNameFactory {
     @Override
-    public GetterSetterName createGetterSetterName(Optional<FXConvert.Config> configOptional, Field field) {
+    public GetterSetterName createGetterSetterName(FXConvert fxConvert, Field field) {
         String name = field.getName();
 
-        if (!configOptional.isPresent()) {
-            return new GetterSetterName(name, name);
-        }
-
-        FXConvert.Config config = configOptional.get();
-        String[] names = config.getterSetterNames();
+        String[] names = fxConvert.getterSetterNames();
 
         switch (names.length) {
             case 0:
