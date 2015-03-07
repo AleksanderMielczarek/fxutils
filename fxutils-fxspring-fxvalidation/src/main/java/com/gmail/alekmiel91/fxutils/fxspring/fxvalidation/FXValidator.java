@@ -28,9 +28,14 @@ public class FXValidator implements Validator<Object> {
     public ValidationResult apply(Control control, Object o) {
         Set<ConstraintViolation<Object>> constraintViolations = validator.validateProperty(model, property);
 
-        return ValidationResult.fromMessages(constraintViolations.stream()
+        if (constraintViolations.isEmpty()) {
+            return new ValidationResult();
+        }
+
+        String message = constraintViolations.stream()
                 .map(ConstraintViolation::getMessage)
-                .map(message -> ValidationMessage.error(control, message))
-                .collect(Collectors.toList()));
+                .collect(Collectors.joining(System.lineSeparator()));
+
+        return ValidationResult.fromMessages(ValidationMessage.error(control, message));
     }
 }
