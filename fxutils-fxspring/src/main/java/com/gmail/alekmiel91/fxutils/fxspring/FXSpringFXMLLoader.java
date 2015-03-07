@@ -12,10 +12,10 @@ import java.util.List;
  * @author Aleksander Mielczarek
  * @since 2015-03-01
  */
-public class SpringFXMLLoader {
+public class FXSpringFXMLLoader {
     private final FXMLLoader fxmlLoader;
 
-    private SpringFXMLLoader(SpringFXMLLoaderBuilder builder) {
+    private FXSpringFXMLLoader(FXSpringFXMLLoaderBuilder builder) {
         this.fxmlLoader = builder.fxmlLoader;
         builder.fxSpringComponents.forEach(FXSpringComponent::init);
         this.fxmlLoader.setControllerFactory(builder.applicationContext::getBean);
@@ -29,23 +29,23 @@ public class SpringFXMLLoader {
         return fxmlLoader.load(inputStream);
     }
 
-    public static class SpringFXMLLoaderBuilder {
+    public static class FXSpringFXMLLoaderBuilder {
         private final FXMLLoader fxmlLoader;
         private final ApplicationContext applicationContext;
         private final List<FXSpringComponent> fxSpringComponents = new ArrayList<>();
 
-        public SpringFXMLLoaderBuilder(FXMLLoader fxmlLoader, ApplicationContext applicationContext) {
+        public FXSpringFXMLLoaderBuilder(FXMLLoader fxmlLoader, ApplicationContext applicationContext) {
             this.fxmlLoader = fxmlLoader;
             this.applicationContext = applicationContext;
         }
 
-        public SpringFXMLLoaderBuilder withFXSpringComponent(FXSpringComponent fxSpringComponent) {
+        public FXSpringFXMLLoaderBuilder withFXSpringComponent(FXSpringComponent fxSpringComponent) {
             fxSpringComponents.add(fxSpringComponent);
             return this;
         }
 
-        public SpringFXMLLoader build() {
-            return new SpringFXMLLoader(this);
+        public FXSpringFXMLLoader build() {
+            return new FXSpringFXMLLoader(this);
         }
     }
 }
